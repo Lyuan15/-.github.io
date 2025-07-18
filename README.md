@@ -1,3 +1,4 @@
+https://www.webfx.com/tools/emoji-cheat-sheet/#emoji-support
 # T87A0
 
 - 关于2.3.x版本(在T9000基础下测试)：
