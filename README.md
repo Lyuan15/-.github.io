@@ -1,17 +1,25 @@
 # T87A0
-关于2.3.x版本(在T9000基础下测试)：
+
+- 关于2.3.x版本(在T9000基础下测试)：
+
 登陆地址在US，在QA环境下测试。账号 guiyuan.liu@oceanwing.com + 密码 guiyuan2020
 guiyuan home
-关于2.2.x版本：
+
+- 关于2.2.x版本：
+
 登陆地址在EU，无法进入QA环境。账号 guiyuan.liu@anker.com + 密码 guiyuan2020
 guiyuan home
 
-一、关于adb
+# 关于adb
+
 全称Android Debug Bridge，用于连接、调试和管理Android设备或模拟器。在智慧屏项目背景下，将T87A0与电脑用数据线连接后，通过常用的adb指令能够：
-1）查看设备状态，是否进入QA环境或是否与电脑连接成功；
+
+1️⃣查看设备状态，是否进入QA环境或是否与电脑连接成功；
 adb device
-2）打印输出日志，输出位置不用命令指定，在文件夹下cmd。
+
+2️⃣打印输出日志，输出位置不用命令指定，在文件夹下cmd。
 adb pull/sdcard/log
+
 二、关于apk
 针对Android系统定制开发，需要用平台指定的加密密钥对各个应用（APK）签名，然后分别把它们放到指定的系统目录下，系统开机后这些应用就是“内置、具有高权限的系统应用”，具备普通应用不具备的能力，并且不会被用户轻易卸载。
 在智慧屏项目背景下，apk包含：Launcher；Login；Provision；Setting；SystemUI。其中Setting比较特殊，似乎不随着OTA升级烧录而变化(?)。其余的部分在OTA后全被覆盖。为避免安装新版apk包时常出现的权限问题，直接使用强制安装命令：
