@@ -134,6 +134,14 @@ rm ota_loop            #删除 ota_loop 文件，不然cam会陷入死循环
 reboot                 #设备重启
 ```
 在需要结束时手动断开连接。此时查看抓取到的日志，根据关键字完成数据统计。统计指标包括：
+![image](https://github.com/Lyuan15/-.github.io/blob/main/OTA%E5%8E%8B%E6%B5%8B%E7%BB%9F%E8%AE%A1%E8%A1%A8.jpg)
+其中，每一个统计指标要根据如下日志关键字查找：（测试时长是通过自动化脚本实现的，不清楚具体流程）
+```
+OTA_START | OTA_running      #测试次数
+OTA_IMG_DOWNLOAD_SUCCEED     #下载OTA包成功次数
+UPGRADE EUFY UGRADE SUCCESS  #OTA成功次数，即擦写flash成功。可以使用关键字OTA_SUCCEED，但偶尔这个关键字会不显示，所以以擦写为准。
+OTA_FAILD                    #OTA失败次数。在这个命令前不远处可以看到失败原因。如果是关键字“the wireless is abnormal”代表是因为网络异常失败。
+```
 
 
 # SecureCRT
