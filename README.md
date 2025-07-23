@@ -142,7 +142,19 @@ OTA_IMG_DOWNLOAD_SUCCEED     #下载OTA包成功次数
 UPGRADE EUFY UGRADE SUCCESS  #OTA成功次数，即擦写flash成功。可以使用关键字OTA_SUCCEED，但偶尔这个关键字会不显示，所以以擦写为准。
 OTA_FAILD                    #OTA失败次数。在这个命令前不远处可以看到失败原因。如果是关键字“the wireless is abnormal”代表是因为网络异常失败。
 ```
+## 当触发了大声检测时，屏端有push且保存了录像，但是录像没有标题（哭声和温度都有标题）
+执行如下操作：
 
+  - reboot 重启设备
+  - 获取root权限
+  - 输入命令：zxdebug ui_debug 15
+  - 在屏上点击录像回放的片段
+  - 在secureCRT上输入cd /tmp/
+  - 输入命令ls，查看是否有record.json这个文件
+  - 打印出来这个文件的内容
+为什么要这样做？
+
+在输入的命令zxdebug ui_debug 15中，zxdebug通常是厂商自带或者工程开发版固件内置的调试/诊断工具，用于打开、关闭系统各个业务模块的debug（调试）开关。ui_debug是它的一个子命令或调试项，专门控制“UI（用户界面）相关业务”的调试功能。15是参数，代表“调试等级”或者“调试bit位”的开关（有些厂商用bit位组合，不同数字含义不同）。输入这个命令后，在屏上点击录像回放的片段才会记录下一个record.json文件。许多嵌入式设备和监控类摄像头，一般将生成业务json、抓包、特殊日志或行为“保护”在调试模式下，只有打开特定debug/测试开关时才触发这些额外输出，普通用户界面下并不会产生这些中间产物以防泄露或者造成性能负担。zxdebug ui_debug 15后，开发/诊断代码会执行“写record.json”这类辅助函数，便于开发、测试、验证业务流程。
 
 # SecureCRT
 一、SecureCRT是什么？
