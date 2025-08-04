@@ -36,8 +36,16 @@ ps：唯一一次安装Launch包存放在D:\T87A0\UAT下。
 
 # 测试报告
 项目不同阶段，不同测试内容有不同的测试报告模板。
-## 测试报告示例
 
+## 测试报告示例
+![image](https://github.com/Lyuan15/-.github.io/blob/main/%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E7%A4%BA%E4%BE%8B.jpg)
+![iamge](https://github.com/Lyuan15/-.github.io/blob/main/%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E7%A4%BA%E4%BE%8B-%E7%BB%AD1.jpg)
+![image](https://github.com/Lyuan15/-.github.io/blob/main/%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E7%A4%BA%E4%BE%8B-%E7%BB%AD2.jpg)
+
+- 整体测试报告最关注的主要有两个评估指标：bug解决率+DI值。DI值是根据P0，P1，P2bug的数量加权计算的。例如，P0bug计为3分，P1bug计为2分...评估时一般以DI<50为pass。需要两个指标的原因是，如果项目涉及bug数量高达4000个，那么此时虽然DI值很大，但是可能bug解决率高达95%。如果项目涉及的bug数量只有30个，那么此时虽然bug解决率可能只有60%，但是DI值很小。
+- 在总结时，要明确：修改点验证；bug回归；测试方案（全量？某个专项？）；某些专项测试（例如OTA，单多路出流，历史视频，布撤防，playback，首页控制，cross-camera tracking，出流页控制等等）。根据本次版本修复新增量大小和影响模块的程度，评估风险与要做的测试内容。
+- 在主要严重问题部分，要声明各个模块严重的bug、阻塞。
+- 下面还有各种测试点（例如出流），要针对模块衡量核心指标、写出严重问题，测试人、结果。
 
 ## 关于OTA
 （测试机非法，每次OTA只采用整机烧录的形式）
