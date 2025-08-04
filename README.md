@@ -64,8 +64,9 @@ OTA - 设备整体的版本升级。
 2. 已解决->拒绝
 
 ## 回归验证bug标准
-[图片]
-随即重现的低概率bug：需要多验证几个版本
+![image](https://github.com/Lyuan15/-.github.io/blob/main/bug%E5%9B%9E%E5%BD%92%E6%A0%87%E5%87%86.PNG)
+
+随机重现的低概率bug：需要多验证几个版本
 
 ## 提单状态流转规范
 1. 如果某个已解决(Solved)的BUG经验证回归通过,则Close该BUG;
