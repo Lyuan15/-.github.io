@@ -34,6 +34,13 @@ adb install -t -d 包名
 ```
 ps：唯一一次安装Launch包存放在D:\T87A0\UAT下。
 
+## 关于OTA
+（测试机非法，每次OTA只采用整机烧录的形式）
+
+OTA - 设备整体的版本升级。
+
+在智慧屏项目背景下，采用RKDevTool作为软件烧录的工具。前置需要安装好驱动。
+
 # 测试报告
 项目不同阶段，不同测试内容有不同的测试报告模板。
 
@@ -47,12 +54,20 @@ ps：唯一一次安装Launch包存放在D:\T87A0\UAT下。
 - 在主要严重问题部分，要声明各个模块严重的bug、阻塞。
 - 下面还有各种测试点（例如出流），要针对模块衡量核心指标、写出严重问题，测试人、结果。
 
-## 关于OTA
-（测试机非法，每次OTA只采用整机烧录的形式）
+# AI Agent工具优化测试用例
 
-OTA - 设备整体的版本升级。
+使用TestCaseX这个工具。TestCaseX是一个打通了Coding、测试类AI Agent的一体化操作软件，提供自动化的AI修改、灵活的prompt组织集成和一键应用Coding能力，助力各位测试工程师借助AI快速地、准确的完成测试用例修缮工作，未来计划还会实现测试用例生成、测试用例去冗余的一系列测试资产消费能力，敬请期待。
 
-在智慧屏项目背景下，采用RKDevTool作为软件烧录的工具。前置需要安装好驱动。
+配置TestCaseX环境时，遇到了一系列问题。首先问题主要原因在于：我的MacOS系统是12版本，而TestCaseX及其所需的依赖库都要求15版本及以上。
+
+1. brew install libiconv 时总是报错：找不到 aclocal-1.17？
+MacOS找不到automake包中的aclocal-1.17工具，尽管automake是1.18版本。这是因为homebrew构建脚本里死写了旧名字。所以可以尝试ln -s命令构建软连接。
+
+2. 建立 aclocal-1.17 到 aclocal-1.18 的软链接失败？
+手动用ln -s命令创建了软链接，让 aclocal-1.17指向aclocal-1.18。目的是让脚本找aclocal-1.17时能运行其实是 1.18 版本，执行软链接命令后确认软链接已正常指向aclocal-1.18，但执行brew install libiconv后依旧报相同的错。gpt: 可能是因为在MacOS版本下存在的隔离机制起作用了，骗不过homebrew的安装。所以考虑用最原始的方式直接安装，但要手动修改项目构建文件Makefile.devel。
+
+3. 在目录里手动解压源码的方式安装成功。
+直接将问题包libiconv-1.18解压，nano命令进入编辑Makefile.devel文件，将其中的aclocal和automake版本改成1.18。最后手动configure、make、sudo make install，安装libiconv成功。
 
 # 缺陷提单
 ## 提单核心
