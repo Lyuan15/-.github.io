@@ -17,7 +17,7 @@ guiyuan home
 
 1️⃣查看设备状态，是否进入QA环境或是否与电脑连接成功；
 ```
-adb device
+adb devices
 ```
 
 2️⃣打印输出日志，输出位置不用命令指定，在文件夹下cmd。
@@ -45,9 +45,7 @@ OTA - 设备整体的版本升级。
 项目不同阶段，不同测试内容有不同的测试报告模板。
 
 ## 测试报告示例
-![image](https://github.com/Lyuan15/-.github.io/blob/main/%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E7%A4%BA%E4%BE%8B.jpg)
-![iamge](https://github.com/Lyuan15/-.github.io/blob/main/%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E7%A4%BA%E4%BE%8B-%E7%BB%AD1.jpg)
-![image](https://github.com/Lyuan15/-.github.io/blob/main/%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E7%A4%BA%E4%BE%8B-%E7%BB%AD2.jpg)
+
 
 - 整体测试报告最关注的主要有两个评估指标：bug解决率+DI(Defect Index)值。DI值是根据P0，P1，P2bug的数量加权计算的。例如，P0bug计为3分，P1bug计为2分...(计算公式：DI= (S0数量×20)+(S1数量×10)+(S2数量×5)+(S3数量×3)+(S4数量×1))，评估时一般以DI<50为pass。需要两个指标的原因是，如果项目涉及bug数量高达4000个，那么此时虽然DI值很大，但是可能bug解决率高达95%。如果项目涉及的bug数量只有30个，那么此时虽然bug解决率可能只有60%，但是DI值很小。
 - 在总结时，要明确：修改点验证；bug回归；测试方案（全量？某个专项？）；某些专项测试（例如OTA，单多路出流，历史视频，布撤防，playback，首页控制，cross-camera tracking，出流页控制等等）。根据本次版本修复新增量大小和影响模块的程度，评估风险与要做的测试内容。
@@ -163,7 +161,6 @@ rm ota_loop            #删除 ota_loop 文件，不然cam会陷入死循环
 reboot                 #设备重启
 ```
 在需要结束时手动断开连接。此时查看抓取到的日志，根据关键字完成数据统计。统计指标包括：
-![image](https://github.com/Lyuan15/-.github.io/blob/main/OTA%E5%8E%8B%E6%B5%8B%E7%BB%9F%E8%AE%A1%E8%A1%A8.jpg)
 其中，每一个统计指标要根据如下日志关键字查找：（测试时长是通过自动化脚本实现的，不清楚具体流程）
 ```
 OTA_START | OTA_running      #测试次数
