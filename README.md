@@ -1,15 +1,6 @@
 https://www.webfx.com/tools/emoji-cheat-sheet/#emoji-support
 # T87A0
 
-- 关于2.3.x版本(在T9000基础下测试)：
-
-登陆地址在US，在QA环境下测试。账号 guiyuan.liu@oceanwing.com + 密码 guiyuan2020
-guiyuan home
-
-- 关于2.2.x版本：
-
-登陆地址在EU，无法进入QA环境。账号 guiyuan.liu@anker.com + 密码 guiyuan2020
-guiyuan home
 
 # 关于adb
 
@@ -77,7 +68,6 @@ MacOS找不到automake包中的aclocal-1.17工具，尽管automake是1.18版本�
 2. 已解决->拒绝
 
 ## 回归验证bug标准
-![image](https://github.com/Lyuan15/-.github.io/blob/main/bug%E5%9B%9E%E5%BD%92%E6%A0%87%E5%87%86.PNG)
 
 随机重现的低概率bug：需要多验证几个版本
 
@@ -140,9 +130,6 @@ monitor的板子上接线，对应TX（发送数据）连接电脑端的RX（接
 - cam比屏先接入，这样做的好处？
 
     cam连接过程一旦出错，可以即时在本地连接条件下反馈到屏（有交互，比简单的cam更能动态做调整与适应），避免屏先入网再等待cam，可能连接延迟或失败。屏根据cam的实际状态动态调整自己的联网流程，提升配对和联调的稳定性。
-
-## cam和BBM连接的流程：
-![image](https://github.com/Lyuan15/-.github.io/blob/main/cam%E5%92%8C%E5%B1%8F%E8%BF%9E%E6%8E%A5.png)
 
 ## 关于OTA：
 可以用手动在secureCRT中下发指令的方式（串口方式要稳定一些，telnet容易断，且抓取日志内容不完整），让cam陷入OTA的循环。这里涉及到两个概念：
